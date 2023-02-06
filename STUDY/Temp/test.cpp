@@ -11,9 +11,11 @@ int main()
 // destroyAllWindows()
     int a;
     std::cin >> a;
+#ifdef XIAXDEFINE
     for (int i = 0; i < a; ++i)
     {
         std::cout << i << std::endl;
     }
+#endif
     return 0;
 }
