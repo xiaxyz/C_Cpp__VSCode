@@ -27,21 +27,26 @@ int main(int argc, char **argv)
 /// @return 可识别的字符
 char JudgeDirection(char Direction0_)
 {
-    if (Direction0_ == 'w')
+    switch (Direction0_)
     {
+    case 'w':
+    case 'W':
+    case '8':
         return 'U';
-    }
-    else if (Direction0_ == 's')
-    {
+    case 's':
+    case 'S':
+    case '2':
         return 'D';
-    }
-    else if (Direction0_ == 'a')
-    {
+    case 'a':
+    case 'A':
+    case '4':
         return 'L';
-    }
-    else if (Direction0_ == 'd')
-    {
+    case 'd':
+    case 'D':
+    case '6':
         return 'R';
+    default:
+        break;
     }
     return Direction0_;
 }
