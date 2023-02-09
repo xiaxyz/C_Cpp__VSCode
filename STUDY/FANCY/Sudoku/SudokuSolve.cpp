@@ -54,10 +54,10 @@ void CurrentToXY(int Current0_, int &XMark0_, int &YMark0_)
     YMark0_ = Current0_ / 9;
 }
 /// @brief 通过坐标判断唯一性
-/// @param PointData0_ 数据值
+/// @param CellData0_ 数据值
 /// @param Current0_ 当前所在编号
 /// @return true 唯一 false 不唯一
-bool JudgeUniqueCurrent(int PointData0_, int Current0_)
+bool JudgeUniqueCurrent(int CellData0_, int Current0_)
 {
     int XMark_;
     int YMark_;
@@ -68,14 +68,14 @@ bool JudgeUniqueCurrent(int PointData0_, int Current0_)
     BoxNum_ = XMark_ / BLOCK_SIDE + YMark_ / BLOCK_SIDE * ALL_SIDE_BLOCK_COUNT;
     RowNum_ = YMark_;
     ColNum_ = XMark_;
-    return Sudoku_.JudgeUnique(PointData0_, BoxNum_, RowNum_, ColNum_);
+    return Sudoku_.JudgeUnique(CellData0_, BoxNum_, RowNum_, ColNum_);
 }
 /// @brief 遍历所有点
 /// @param Current0_ 当前所在位置
 /// @return true 结果可行 false 结果不可行
 bool GoThrough(int Current0_)
 {
-    if (Current0_ == POINT_COUNT)
+    if (Current0_ == CELL_COUNT)
     {
         return true;
     }
