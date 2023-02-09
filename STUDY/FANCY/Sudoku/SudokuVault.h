@@ -4,14 +4,14 @@
 #include <vector>
 #include <string>
 
-#define BOX_SIDE 3 // 宫格的边长
+#define BLOCK_SIDE 3 // 宫格的边长
 #define ALL_SIDE 9     // 总边长
 #define POINT_COUNT (ALL_SIDE * ALL_SIDE)    // 总点数
-#define ALL_SIDE_BOX_COUNT (ALL_SIDE / BOX_SIDE) // 总边长中含有的宫格数
-#define BOX_COUNT (ALL_SIDE_BOX_COUNT * ALL_SIDE_BOX_COUNT) // 总宫格数
+#define ALL_SIDE_BLOCK_COUNT (ALL_SIDE / BLOCK_SIDE) // 总边长中含有的宫格数
+#define BLOCK_COUNT (ALL_SIDE_BLOCK_COUNT * ALL_SIDE_BLOCK_COUNT) // 总宫格数
 
 class SudokuPoint;
-class SudokuBox;
+class SudokuBlock;
 class SudokuRow;
 class SudokuCol;
 class SudokuAll;
@@ -35,15 +35,15 @@ protected:
 };
 
 // 一个宫格中的信息
-class SudokuBox
+class SudokuBlock
 {
 public:
-    SudokuBox();
-    ~SudokuBox();
+    SudokuBlock();
+    ~SudokuBlock();
     friend class SudokuAll;
 
 protected:
-    std::vector<std::vector<SudokuPoint *>> Box_; // 宫格编号
+    std::vector<std::vector<SudokuPoint *>> Block_; // 宫格编号
 };
 
 // 一行中的信息
@@ -86,7 +86,7 @@ public:
 
 protected:
     std::vector<SudokuPoint> AllPoint_; // 所有点
-    std::vector<SudokuBox> AllBox_; // 所有宫格
+    std::vector<SudokuBlock> AllBlock_; // 所有宫格
     std::vector<SudokuRow> AllRow_; // 所有行
     std::vector<SudokuCol> AllCol_; // 所有列
 };

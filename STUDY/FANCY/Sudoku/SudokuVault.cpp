@@ -37,15 +37,15 @@ void SudokuPoint::SetData(int Data0_)
     Data_ = Data0_;
 }
 
-SudokuBox::SudokuBox()
+SudokuBlock::SudokuBlock()
 {
-    Box_.resize(BOX_SIDE);
-    for (int i = Box_.size() - 1; i >= 0; --i)
+    Block_.resize(BLOCK_SIDE);
+    for (int i = Block_.size() - 1; i >= 0; --i)
     {
-        Box_[i].resize(BOX_SIDE, NULL);
+        Block_[i].resize(BLOCK_SIDE, NULL);
     }
 }
-SudokuBox::~SudokuBox()
+SudokuBlock::~SudokuBlock()
 {
 }
 
@@ -68,7 +68,7 @@ SudokuCol::~SudokuCol()
 SudokuAll::SudokuAll()
 {
     AllPoint_.resize(POINT_COUNT);
-    AllBox_.resize(BOX_COUNT);
+    AllBlock_.resize(BLOCK_COUNT);
     AllRow_.resize(ALL_SIDE);
     AllCol_.resize(ALL_SIDE);
 }
@@ -117,7 +117,7 @@ void SudokuAll::ReadConsole()
 /// @param Num0_ 点所在的位置
 void SudokuAll::SetData(SudokuPoint *Point0_, int Num0_)
 {
-    AllBox_[(AllPoint_[Num0_].XMark_ / ALL_SIDE_BOX_COUNT) + (AllPoint_[Num0_].YMark_ / ALL_SIDE_BOX_COUNT) * ALL_SIDE_BOX_COUNT].Box_[AllPoint_[Num0_].XMark_ % BOX_SIDE][AllPoint_[Num0_].YMark_ % BOX_SIDE] = Point0_;
+    AllBlock_[(AllPoint_[Num0_].XMark_ / ALL_SIDE_BLOCK_COUNT) + (AllPoint_[Num0_].YMark_ / ALL_SIDE_BLOCK_COUNT) * ALL_SIDE_BLOCK_COUNT].Block_[AllPoint_[Num0_].XMark_ % BLOCK_SIDE][AllPoint_[Num0_].YMark_ % BLOCK_SIDE] = Point0_;
     AllRow_[AllPoint_[Num0_].YMark_].Row_[AllPoint_[Num0_].XMark_] = Point0_;
     AllCol_[AllPoint_[Num0_].XMark_].Col_[AllPoint_[Num0_].YMark_] = Point0_;
 }
@@ -137,25 +137,25 @@ bool SudokuAll::JudgeModify(int Current0_)
 }
 /// @brief 通过 宫格, 行, 列 判断数据唯一性
 /// @param PointData0_ 需要判断的值
-/// @param BoxNum0_ 所在的宫格编号
+/// @param BlockNum0_ 所在的宫格编号
 /// @param RowNum0_ 所在的行编号
 /// @param ColNum0_ 所在的列编号
 /// @return true 唯一 false 不唯一
-bool SudokuAll::JudgeUnique(int PointData0_, int BoxNum0_, int RowNum0_, int ColNum0_)
+bool SudokuAll::JudgeUnique(int PointData0_, int BlockNum0_, int RowNum0_, int ColNum0_)
 {
-    for (int i = 0; i < BOX_SIDE; ++i)
+    for (int i = 0; i < BLOCK_SIDE; ++i)
     {
-        for (int j = 0; j < BOX_SIDE; ++j)
+        for (int j = 0; j < BLOCK_SIDE; ++j)
         {
-            if (PointData0_ == AllBox_[BoxNum0_].Box_[i][j]->GetData())
+            if (PointData0_ == AllBlock_[BlockNum0_].Block_[i][j]->GetData())
             {
                 return false;
             }
-            if (PointData0_ == AllRow_[RowNum0_].Row_[i * BOX_SIDE + j]->GetData())
+            if (PointData0_ == AllRow_[RowNum0_].Row_[i * BLOCK_SIDE + j]->GetData())
             {
                 return false;
             }
-            if (PointData0_ == AllCol_[ColNum0_].Col_[i * BOX_SIDE + j]->GetData())
+            if (PointData0_ == AllCol_[ColNum0_].Col_[i * BLOCK_SIDE + j]->GetData())
             {
                 return false;
             }

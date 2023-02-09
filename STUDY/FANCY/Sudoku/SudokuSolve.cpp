@@ -65,7 +65,7 @@ bool JudgeUniqueCurrent(int PointData0_, int Current0_)
     int BoxNum_; // 宫格编号
     int RowNum_; // 行编号
     int ColNum_; // 列编号
-    BoxNum_ = XMark_ / BOX_SIDE + YMark_ / BOX_SIDE * ALL_SIDE_BOX_COUNT;
+    BoxNum_ = XMark_ / BLOCK_SIDE + YMark_ / BLOCK_SIDE * ALL_SIDE_BLOCK_COUNT;
     RowNum_ = YMark_;
     ColNum_ = XMark_;
     return Sudoku_.JudgeUnique(PointData0_, BoxNum_, RowNum_, ColNum_);
