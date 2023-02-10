@@ -1,6 +1,6 @@
 #include "Game2048Vault.cpp"
 
-Game2048All Game_(2, 2);
+Game2048All Game_(4, 4);
 
 char JudgeDirection(char);
 

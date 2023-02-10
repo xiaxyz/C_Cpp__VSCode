@@ -39,6 +39,7 @@ private:
     int Length_; // 长
     int Width_; // 宽
     long long Score_; // 分数
+    long long Pre_Score_;
     int MaxNewNumber_; // 最大能产生的数字
 };
 

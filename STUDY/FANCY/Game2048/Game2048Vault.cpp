@@ -181,6 +181,7 @@ void Game2048All::Move(char Direction0_)
 bool Game2048All::Blend(char Direction0_)
 {
     bool flag = false;
+    Pre_Score_ = 0;
     if (Direction0_ == 'U')
     {
         for (int i = 0; i < Length_; ++i)
@@ -195,6 +196,7 @@ bool Game2048All::Blend(char Direction0_)
                         if (AllPoint_[i][j].Data_ == AllPoint_[i][j + Position_].Data_)
                         {
                             AllPoint_[i][j].Data_ += AllPoint_[i][j + Position_].Data_;
+                            Pre_Score_ = AllPoint_[i][j].Data_;
                             AllPoint_[i][j + Position_].Data_ = 0;
                             j += Position_;
                             flag = true;
@@ -227,6 +229,7 @@ bool Game2048All::Blend(char Direction0_)
                         if (AllPoint_[i][j].Data_ == AllPoint_[i][j - Position_].Data_)
                         {
                             AllPoint_[i][j].Data_ += AllPoint_[i][j - Position_].Data_;
+                            Pre_Score_ = AllPoint_[i][j].Data_;
                             AllPoint_[i][j - Position_].Data_ = 0;
                             j -= Position_;
                             flag = true;
@@ -259,6 +262,7 @@ bool Game2048All::Blend(char Direction0_)
                         if (AllPoint_[j][i].Data_ == AllPoint_[j + Position_][i].Data_)
                         {
                             AllPoint_[j][i].Data_ += AllPoint_[j + Position_][i].Data_;
+                            Pre_Score_ = AllPoint_[j][i].Data_;
                             AllPoint_[j + Position_][i].Data_ = 0;
                             j += Position_;
                             flag = true;
@@ -291,6 +295,7 @@ bool Game2048All::Blend(char Direction0_)
                         if (AllPoint_[j][i].Data_ == AllPoint_[j - Position_][i].Data_)
                         {
                             AllPoint_[j][i].Data_ += AllPoint_[j - Position_][i].Data_;
+                            Pre_Score_ = AllPoint_[j][i].Data_;
                             AllPoint_[j - Position_][i].Data_ = 0;
                             j -= Position_;
                             flag = true;
@@ -309,6 +314,7 @@ bool Game2048All::Blend(char Direction0_)
             }
         }
     }
+    Score_ += Pre_Score_;
     return flag;
 }
 /// @brief 判断空位的个数
@@ -347,7 +353,6 @@ void Game2048All::CreateNewNumber()
     NewNumber_ = (int)pow(2, RandomNumber_(Engine_));
     AllEmpty_[NewID_]->Data_ = NewNumber_;
     AllEmpty_[NewID_]->WhetherNew_ = true;
-    Score_ += NewNumber_ / 2;
 }
 /// @brief 判断结束
 /// @return true 结束 false 未结束
