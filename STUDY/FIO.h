@@ -1,6 +1,6 @@
 #include <cstdio>
-#define CFileIn "./in.txt"
-#define CFileOut "./out.txt"
-#define CFIn freopen(CFileIn, "rt", stdin);
-#define CFOut freopen(CFileOut, "wt", stdout);
-#define CFIO CFIn CFOut
+#define CFileIn(FilePath) FilePath"/in.txt"
+#define CFileOut(FilePath) FilePath"/out.txt"
+#define CFIn(FilePath) freopen(CFileIn(FilePath), "rt", stdin);
+#define CFOut(FilePath) freopen(CFileOut(FilePath), "wt", stdout);
+#define CFIO(FilePath) CFIn(FilePath) CFOut(FilePath)

@@ -2,7 +2,7 @@
 #include <iostream>
 int main()
 {
-    CFIO
+    CFIO("C:/VSCode__C_Cpp/STUDY")
 // ShowWindow(GetConsoleWindow(),SW_HIDE);
 // Mat img = imread("C:/Users/31381/Downloads/十三.png", IMREAD_UNCHANGED);
 // namedWindow("十三英桀", WINDOW_FREERATIO);
