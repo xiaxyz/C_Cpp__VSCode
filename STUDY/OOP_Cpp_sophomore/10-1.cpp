@@ -54,7 +54,7 @@ void num::judge_s()
 num num::StoN(string x)
 {
     string n, d;
-    if (x.find("/") == -1)
+    if (x.find("/") == string::npos)
     {
         d = "1";
         n = x;
@@ -171,21 +171,36 @@ int main(void)
     num a("-1/2");
     num b("3");
     num c;
+    cout << "a : ";
+    a.print();
+    cout << endl;
+    cout << "b : ";
+    b.print();
+    cout << endl;
     c = a + b;
+    cout << "a + b : ";
     c.print();
     cout << endl;
     c = a - b;
+    cout << "a - b : ";
     c.print();
     cout << endl;
     c = a * b;
+    cout << "a * b : ";
     c.print();
     cout << endl;
     c = a / b;
+    cout << "a / b : ";
     c.print();
     cout << endl;
+    cout << "(a < b ? < : >=) ";
     if (a < b)
     {
         cout << "<";
+    }
+    else
+    {
+        cout << ">=";
     }
     return 0;
 }

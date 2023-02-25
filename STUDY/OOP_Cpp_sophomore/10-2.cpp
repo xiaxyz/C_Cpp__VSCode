@@ -92,7 +92,7 @@ Set operator+(const Set &a, const Set &b)
 Set operator-(const Set &a, const Set &b)
 {
     Set x;
-    int n = 0, f = 0;
+    int f = 0;
     int *t = new int[a.total](), t_n = 0;
     for (int i = 0; i < a.total; ++i)
     {
@@ -119,7 +119,6 @@ Set operator-(const Set &a, const Set &b)
 Set operator*(const Set &a, const Set &b)
 {
     Set x;
-    int n = 0;
     int *t = new int[a.total](), t_n = 0;
     for (int i = 0; i < a.total; ++i)
     {
@@ -145,8 +144,15 @@ int main(void)
     Set a(x, 3);
     Set b(y, 6);
     Set c;
+    cout << "a : ";
+    a.print();
+    cout << "b : ";
+    b.print();
     c = a + b;
+    cout << "a + b : ";
     c.print();
-    (a + b).print();
+    c = a - b;
+    cout << "a - b : ";
+    c.print();
     return 0;
 }

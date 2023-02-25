@@ -1,4 +1,4 @@
-#include "Game2048Vault.cpp"
+#include "Game2048Vault.h"
 
 Game2048All Game_(4, 4);
 

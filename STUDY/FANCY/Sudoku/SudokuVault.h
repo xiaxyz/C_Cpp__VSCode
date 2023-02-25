@@ -3,6 +3,8 @@
 
 #include <vector>
 #include <string>
+#include <fstream>
+#include <iostream>
 
 #define BLOCK_SIDE 3 // 宫格的边长
 #define ALL_SIDE 9     // 总边长

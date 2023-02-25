@@ -17,10 +17,10 @@ public:
     Stack();
     ~Stack();
     void initStack();
-    int getnum();
+    int getNum();
     void push(T n);
-    T *top();
-    void prin();
+    T pop();
+    void print();
     void deleteStack();
     void command(string comm);
 private:
@@ -31,8 +31,8 @@ private:
 template<class T>
 Stack<T>::Stack()
 {
-    head = NULL;
-    tail = NULL;
+    head = nullptr;
+    tail = nullptr;
     initStack();
 }
 template<class T>
@@ -43,21 +43,21 @@ Stack<T>::~Stack()
 template<class T>
 void Stack<T>::initStack()
 {
-    if(head == NULL)
+    if(head == nullptr)
     {
         head = new list<T>;
-        head->next = NULL;
+        head->next = nullptr;
     }
     tail = head;
 }
 template<class T>
-int Stack<T>::getnum()
+int Stack<T>::getNum()
 {
-    if(head == NULL)
+    if(head == nullptr)
         return 0;
     int n = 0;
     list<T> *t = head;
-    while(t->next != NULL)
+    while(t->next != nullptr)
     {
         t = t->next;
         n++;
@@ -70,29 +70,29 @@ void Stack<T>::push(T n)
     list<T> *temp;
     temp = new list<T>;
     temp->data = n;
-    temp->next = NULL;
+    temp->next = nullptr;
     tail->next = temp;
     tail = temp;
 }
 template<class T>
-T Stack<T>::*pop()
+T Stack<T>::pop()
 {
-    if (head->next == NULL)
-        return NULL;
-    T d = tail;
+    if (head == nullptr || head->next == nullptr)
+        return nullptr;
+    T d = tail->data;
     list<T> *temp = head;
-    while (temp->next != NULL && temp->next->next != NULL)
+    while (temp->next != nullptr && temp->next->next != nullptr)
         temp = temp->next;
-    temp->next = NULL;
+    temp->next = nullptr;
     delete tail;
     tail = temp;
     return d;
 }
 template<class T>
-void Stack<T>::prin()
+void Stack<T>::print()
 {
     list<T> *curr = head;
-    while (curr->next != NULL)
+    while (curr->next != nullptr)
     {
         curr = curr->next;
         cout << curr->data << ' ';
@@ -103,7 +103,7 @@ template<class T>
 void Stack<T>::deleteStack()
 {
     list<T> *curr = head;
-    while(curr != NULL)
+    while(curr != nullptr)
     {
         list<T> *temp = curr->next;
         delete curr;
@@ -126,7 +126,7 @@ void Stack<T>::command(string comm)
     if(comm == "pop")
         cout << pop();
     if(comm == "print")
-        prin();
+        print();
     if(comm == "exit")
         exit(0);
 }

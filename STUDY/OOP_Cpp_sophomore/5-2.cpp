@@ -32,12 +32,12 @@ void num::judge_fu()
             fu = -1;
             mu = -mu;
         }
-        else 
+        else
         {
             fu = 1;
         }
     }
-    else 
+    else
     {
         zi = -zi;
         if (mu < 0)
@@ -45,7 +45,7 @@ void num::judge_fu()
             fu = 1;
             mu = -mu;
         }
-        else 
+        else
         {
             fu = -1;
         }
@@ -94,7 +94,7 @@ public:
     Complex c_mul(Complex &x);
     Complex c_div(Complex &x);
     float mod();
-    void prin();
+    void print();
 private:
     num shi, xu;
 };
@@ -154,7 +154,7 @@ float Complex::mod()
     t = shi.mul(shi).add(xu.mul(xu));
     return sqrt(t.zi) / sqrt(t.mu);
 }
-void Complex::prin()
+void Complex::print()
 {
     if (shi.fu < 0)
     {
@@ -164,7 +164,7 @@ void Complex::prin()
     {
         cout << "(" << shi.zi << "/" << shi.mu << ")";
     }
-    else 
+    else
     {
         cout << shi.zi;
     }
@@ -174,18 +174,18 @@ void Complex::prin()
         {
             cout << "+" << "(" << xu.zi << "/" << xu.mu << ")" << "i" << endl;
         }
-        else 
+        else
         {
             cout << "+" << xu.zi << "i" << endl;
         }
     }
-    else 
+    else
     {
         if (xu.mu != 1)
         {
             cout << "-" << "(" << xu.zi << "/" << xu.mu << ")" << "i" << endl;
         }
-        else 
+        else
         {
             cout << "-" << xu.zi << "i" << endl;
         }
@@ -196,17 +196,17 @@ int main(void)
 {
     Complex a(3, 4), b(2, 3);
     cout << "第一个数 ";
-    a.prin();
+    a.print();
     cout << "第二个数 ";
-    b.prin();
+    b.print();
     cout << "相加 ";
-    a.c_add(b).prin();
+    a.c_add(b).print();
     cout << "相减 ";
-    a.c_sub(b).prin();
+    a.c_sub(b).print();
     cout << "相乘 ";
-    a.c_mul(b).prin();
+    a.c_mul(b).print();
     cout << "相除 ";
-    a.c_div(b).prin();
+    a.c_div(b).print();
     cout << "第一个数模长 " << a.mod() << endl;
     cout << "第二个数模长 " << b.mod() << endl;
     return 0;

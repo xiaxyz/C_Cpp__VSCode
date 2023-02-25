@@ -1,4 +1,4 @@
-#include "SupermarketMerchandiseManagementSystem.cpp"
+#include "SupermarketMerchandiseManagementSystem.h"
 
 using namespace std;
 

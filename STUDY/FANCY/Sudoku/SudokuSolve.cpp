@@ -1,5 +1,5 @@
 /*在 "Sudoku.txt" 中输入数据或直接从控制台输入数据, 0 代表需要解的数据, 1~9 代表题目给的数据, 结果在控制台输出*/
-#include "./SudokuVault.cpp"
+#include "./SudokuVault.h"
 #include <chrono>
 
 #define SudokuFile "./SudokuFile.txt"

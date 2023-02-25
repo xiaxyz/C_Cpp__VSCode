@@ -1,6 +1,4 @@
 #include "./SudokuVault.h"
-#include <fstream>
-#include <iostream>
 
 SudokuCell::SudokuCell(int XMark0_, int YMark0_, int Data0_, bool Modify0_)
 {
@@ -129,7 +127,7 @@ void SudokuAll::SetDataCurrent(int Current0_, int CellData0_)
     AllCell_[Current0_].SetData(CellData0_);
 }
 /// @brief 判断所在编号是否可被修改
-/// @param Current0_ 
+/// @param Current0_
 /// @return true 可修改 false 不可修改
 bool SudokuAll::JudgeModify(int Current0_)
 {
@@ -172,7 +170,7 @@ void SudokuAll::PrintData()
         {
             std::cout << " \033[36m" << AllCell_[i].GetData() << "\033[37m";
         }
-        else 
+        else
         {
             std::cout << " \033[31m" << AllCell_[i].GetData() << "\033[37m";
         }

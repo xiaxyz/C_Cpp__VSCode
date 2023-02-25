@@ -9,10 +9,10 @@ public:
     void add(int x);
     void del(int x);
     void add_arr(int *arr, int a_l);
-    void inte(const Set &t);
-    void unio(const Set &t);
-    void diff(const Set &t);
-    void prin();
+    void Intersection(const Set &t);
+    void Union(const Set &t);
+    void Difference(const Set &t);
+    void print();
 
 private:
     int *data;
@@ -78,7 +78,7 @@ void Set::add_arr(int *arr, int a_l)
     copy(arr, &arr[a_l], data);
     l = a_l;
 }
-void Set::inte(const Set &t)
+void Set::Intersection(const Set &t)
 {
     int f = 0;
     int *temp, t_l = 0;
@@ -104,7 +104,7 @@ void Set::inte(const Set &t)
     l = t_l;
     delete []temp;
 }
-void Set::unio(const Set &t)
+void Set::Union(const Set &t)
 {
     int f = 0;
     for (int i = 0; i < t.l; ++i)
@@ -124,7 +124,7 @@ void Set::unio(const Set &t)
         }
     }
 }
-void Set::diff(const Set &t)
+void Set::Difference(const Set &t)
 {
     int f = 0;
     for (int i = 0; i < l; ++i)
@@ -145,7 +145,7 @@ void Set::diff(const Set &t)
         }
     }
 }
-void Set::prin()
+void Set::print()
 {
     if (l == 0)
     {
@@ -168,22 +168,22 @@ int main(void)
     Set t;
     t.add_arr(a, 5);
     cout << "第一组数据 ";
-    t.prin();
+    t.print();
     Set u;
     u.add_arr(b, 6);
     cout << "第二组数据 ";
-    u.prin();
-    t.inte(u);
+    u.print();
+    t.Intersection(u);
     cout << "交集 ";
-    t.prin();
+    t.print();
     t.add_arr(a, 5);
-    t.unio(u);
+    t.Union(u);
     cout << "并集 ";
-    t.prin();
+    t.print();
     t.add_arr(a, 5);
-    t.diff(u);
+    t.Difference(u);
     cout << "差集 ";
-    t.prin();
+    t.print();
     /*
     int n;
     cout << "请输入集合大小:";
@@ -191,7 +191,7 @@ int main(void)
     Set t(n);
     int f = 1;
     string comm;
-    cout << "请输入命令 如 \"add 1\" 添加元素1 \"del 1\" 删除元素1 \"prin\" 输出所有元素" << endl;
+    cout << "请输入命令 如 \"add 1\" 添加元素1 \"del 1\" 删除元素1 \"print\" 输出所有元素" << endl;
     while (f != 0)
     {
         getline(cin, comm);
@@ -205,9 +205,9 @@ int main(void)
             comm = comm.substr(comm.find("del") + 3);
             t.del(stoi(comm));
         }
-        else if (comm.find("prin") != string::npos)
+        else if (comm.find("print") != string::npos)
         {
-            t.prin();
+            t.print();
         }
         else if (comm == "0")
         {

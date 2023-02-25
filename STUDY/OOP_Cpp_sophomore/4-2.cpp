@@ -8,7 +8,7 @@ public:
     ~Set();
     void add(int x);
     void del(int x);
-    void prin();
+    void print();
 private:
     int *data;
     int l, s;
@@ -65,13 +65,13 @@ void Set::del(int x)
     }
     cout << "Not find" << endl;
 }
-void Set::prin()
+void Set::print()
 {
     if(l == 0)
     {
         cout << "No number" << endl;
     }
-    else 
+    else
     {
         for(int i = 0; i < l; ++i)
         {
@@ -89,7 +89,7 @@ int main(void)
     Set t(n);
     int f = 1;
     string comm;
-    cout << "请输入命令 如 \"add 1\" 添加元素1 \"del 1\" 删除元素1 \"prin\" 输出所有元素" << endl;
+    cout << "请输入命令 如 \"add 1\" 添加元素1 \"del 1\" 删除元素1 \"print\" 输出所有元素" << endl;
     while(f != 0)
     {
         getline(cin, comm);
@@ -103,9 +103,9 @@ int main(void)
             comm = comm.substr(comm.find("del") + 3);
             t.del(stoi(comm));
         }
-        else if(comm.find("prin") != string::npos)
+        else if(comm.find("print") != string::npos)
         {
-            t.prin();
+            t.print();
         }
         else if(comm == "0")
         {

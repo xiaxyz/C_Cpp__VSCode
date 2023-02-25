@@ -2,7 +2,7 @@
 
 using namespace std;
 
-void print(string s, int n);
+void print(string s, int n = 10);
 
 int main(void)
 {
