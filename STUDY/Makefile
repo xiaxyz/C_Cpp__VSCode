@@ -1,5 +1,5 @@
 
-$(shell mkdir $(OBJ_PATH) $(EXE_PATH))
+$(shell mkdir $(EXE_PATH))
 
 SRC = $(foreach dir, $(SRC_PATH),$(wildcard $(dir)/*$(EXTENSION)))
 
@@ -8,4 +8,4 @@ $(EXE):$(SRC)
 
 .PHONY: clean
 clean:
-	$(RM) $(OBJ_PATH) $(EXE_PATH)
+	$(RM) $(EXE_PATH)
